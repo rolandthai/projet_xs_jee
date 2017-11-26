@@ -1,0 +1,29 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+<package name="/" namespace="/User" extends="struts-default">
+
+	<action name="home">
+		<result>/login.jsp</result>
+	</action>
+	
+	 	  
+	<action name="login" class="action.LoginAction">
+		<result name="SUCCESS">/xspeedit.jsp</result>
+		<result name="ERROR">/error.jsp</result>
+	</action>
+  
+ 	<action name="traitement" class="action.TraitementAction" method="calcul">
+		<result name="SUCCESS">
+			/xspeedit.jsp
+		</result>
+		<result name="ERROR">/errorSaisie.jsp</result>
+	</action>
+ 
+
+</package>
+
+</struts>
