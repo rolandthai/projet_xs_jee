@@ -11,7 +11,6 @@ public class TraitementServiceImpl implements TraitementService {
 	public LotCartons traitementDesArticles(String chaineArticles, int tailleCartonMax) throws Exception {
 
 		LotCartons lotCartons = new LotCartons();
-
 		
 		//liste temporaire utilisée pour le traitement
 		List<Integer> listArticlesTmpA = new ArrayList<Integer>();
@@ -28,10 +27,9 @@ public class TraitementServiceImpl implements TraitementService {
 		}
 		else
 		{
-			
 			if(!isCorrect(chaineArticles))
 			{
-				Exception e = new Exception("Problème dur la chaine saisie");
+				Exception e = new Exception("Problème sur la chaine saisie");
 				throw e;
 			}
 			
@@ -54,7 +52,7 @@ public class TraitementServiceImpl implements TraitementService {
 	{
 		try
 		{
-		     Integer.decode(chaineArticles);
+		     Long.decode(chaineArticles);
 		     return true;  
 		}
 		catch(NumberFormatException  e)
@@ -64,12 +62,17 @@ public class TraitementServiceImpl implements TraitementService {
 	}
 
 
+	/**
+	 * permet le traitement et le tri de article
+	 * @param listArticlesTmpA
+	 * @param tailleCartonMax
+	 * @return
+	 */
 	public LotCartons triEtTraitementlisteArticle(List<Integer> listArticlesTmpA, int tailleCartonMax) {
 
 		LotCartons lotCartons = new LotCartons();
 		//liste de résultat
 		List<String> listLotCartons = new ArrayList<String>();
-
 
 		//Tri decroissant de la liste temporaire de la taille des articles
 		Collections.sort(listArticlesTmpA);
@@ -104,11 +107,9 @@ public class TraitementServiceImpl implements TraitementService {
 					//si il rentre on l'ajoute
 					String sep = "";
 					if(tailleCartonMax>10)
-						sep = " ";
-						
+						sep = " ";	
 					strCarton += sep + tailleArticleB;
-					
-					
+										
 					tailleArticleA = tailleArticleA + tailleArticleB;
 					//On retire l'article ajouté
 					listArticlesTmpB.remove(j);
@@ -122,5 +123,4 @@ public class TraitementServiceImpl implements TraitementService {
 
 		return lotCartons;
 	}
-
 }

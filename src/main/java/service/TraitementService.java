@@ -10,8 +10,4 @@ public interface TraitementService {
 	 * @return
 	 */
 	LotCartons traitementDesArticles(String chaineArticles, int tailleCartonMax) throws Exception; 
-	
-	//LotCartons traitementDesArticlesSup10(String chaineArticles, int tailleCartonMax);
-	
-
 }

@@ -1,37 +1,40 @@
 package test;
 
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import entite.LotCartons;
 import service.TraitementService;
-import service.TraitementServiceImpl;
-
-
 
 public class TraitementServiceTest {
 
-	
-//	private TraitementServices traitementService;
-
 	@Test
-	public void testTraitementDesArticles() {
-		
+	public void testTraitementDesArticlesOK() {
 		int tailleCartonMax = 10;
 		String chaineArticles = "163841689525773";
-//		String chaineArticles = "4857614221";
-		
-		TraitementService traitementService = new TraitementServiceImpl();
-		
-		
+		// String chaineArticles = "4857614221";
+		testTraitementDesArticles(chaineArticles, tailleCartonMax);
+	}
+
+	@Test
+	public void testTraitementDesArticlesKO() {
+		int tailleCartonMax = 10;
+		String chaineArticles = "1638416ert25773";
+		testTraitementDesArticles(chaineArticles, tailleCartonMax);
+	}
+
+	public void testTraitementDesArticles(String chaineArticles, int tailleCartonMax) {
+
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		TraitementService traitementService = (TraitementService) context.getBean("traitementService");
+
 		LotCartons lotCartons = new LotCartons();
-		
 		try {
 			lotCartons = traitementService.traitementDesArticles(chaineArticles, tailleCartonMax);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 		System.out.println("Résultat du Robot Optimisé :");
 		System.out.println("Lot de cartons : " + lotCartons.getLotDeCartons().toString().replaceAll(", ", "/"));

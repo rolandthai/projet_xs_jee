@@ -6,9 +6,6 @@
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4 text-center">
 
-<%-- 
-<h3>Bienvenu sur l'application XSPeedIt <s:property value="name"></s:property></h3>
- --%>
 		<h3>XSpeedIt Robot:</h3>
 
 		<s:form action="traitement">
@@ -29,15 +26,17 @@
 </div>
 
 <div class="row" style="background-color: #ABCD88;">
-	<h3>
-		<s:text name=" Nombre de cartons : "></s:text>
-		<s:property value="lotCartons.nombreDeCartons"></s:property>
-	</h3>
+	<div class="col-sm-4">
+		<h3>
+			<s:text name=" Nombre de cartons : "></s:text>
+			<s:property value="lotCartons.nombreDeCartons"></s:property>
+		</h3>
 
-	<h3>
-		<s:text name="Robot Optimisé : "></s:text>
-		<s:property value="lotCartons.lotDeCartonsStr"></s:property>
-	</h3>
+		<h3>
+			<s:text name="Robot Optimisé : "></s:text>
+			<s:property value="lotCartons.lotDeCartonsStr"></s:property>
+		</h3>
+	</div>
 </div>
 
 <s:if test="<s:property value='resultat'/>!= null">
