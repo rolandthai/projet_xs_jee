@@ -13,10 +13,10 @@ import service.TraitementServiceImpl;
  */
 public class TraitementAction implements Action {
 	
-	//Java Bean to hold the form parameters
-		private String chaineArticles;
-		private String resultat;
-		private LotCartons lotCartons;
+	private int tailleCartonMax;
+	private String chaineArticles;
+	private String resultat;
+	private LotCartons lotCartons;
 	
 	@Override
 	public String execute() throws Exception {
@@ -37,7 +37,12 @@ public class TraitementAction implements Action {
 		{
 			setResultat(getChaineArticles().substring(2));
 			
-			lotCartons = traitementService.traitementDesArticles(getChaineArticles());
+			if(getTailleCartonMax() > 10 && !getChaineArticles().contains(","))
+			{
+				return "ERROR";
+			}
+			lotCartons = traitementService.traitementDesArticles(getChaineArticles(), getTailleCartonMax());	
+			
 			
 			return "SUCCESS";
 		}
@@ -49,6 +54,16 @@ public class TraitementAction implements Action {
 	
 	
 	
+	
+
+	public int getTailleCartonMax() {
+		return tailleCartonMax;
+	}
+
+	public void setTailleCartonMax(int tailleCartonMax) {
+		this.tailleCartonMax = tailleCartonMax;
+	}
+
 	public String getChaineArticles() {
 		return chaineArticles;
 	}

@@ -4,23 +4,23 @@
 
 <struts>
 
-<package name="/" namespace="/User" extends="struts-default">
+<package name="/" namespace="/" extends="struts-default, tiles-default">
 
 	<action name="home">
-		<result>/login.jsp</result>
+		<result type="tiles">login</result>
 	</action>
 	
 	 	  
 	<action name="login" class="action.LoginAction">
-		<result name="SUCCESS">/xspeedit.jsp</result>
-		<result name="ERROR">/error.jsp</result>
+		<result name="SUCCESS" type="tiles">xspeedit</result>
+		<result name="ERROR" type="tiles">errorLogin</result>
 	</action>
   
  	<action name="traitement" class="action.TraitementAction" method="calcul">
-		<result name="SUCCESS">
-			/xspeedit.jsp
+		<result name="SUCCESS" type="tiles">
+			xspeedit
 		</result>
-		<result name="ERROR">/errorSaisie.jsp</result>
+		<result name="ERROR" type="tiles">errorSaisie</result>
 	</action>
  
 

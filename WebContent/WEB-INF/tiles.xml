@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!-- BASELAYOUT -->
+	<definition name="baseLayout" template="/jsp/tiles/template.jsp">
+		<put-attribute name="complementaryHeadPage" value=""/>
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/jsp/common/header.jsp"/>
+		<put-attribute name="menu" value=""/>
+		<put-attribute name="body" value="/jsp/common/body.jsp"/>
+		<put-attribute name="footer" value="/jsp/common/footer.jsp"/>
+		<put-attribute name="complementaryScripts" value=""/>
+	</definition>
+
+
+	<!-- login -->
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Accueil"/>
+		<put-attribute name="body" value="/jsp/login.jsp"/>
+	</definition>
+
+	<!--xspeedit-->
+	<definition name="xspeedit" extends="baseLayout">
+		<put-attribute name="title" value="Application XSpeedIt"/>
+		<put-attribute name="body" value="/jsp/xspeedit.jsp"/>
+	</definition>
+
+	<!--error login-->
+	<definition name="errorLogin" extends="baseLayout">
+		<put-attribute name="title" value="Erreur de login"/>
+		<put-attribute name="body" value="/jsp/error.jsp"/>
+	</definition>
+
+	<!--error login saisie-->
+	<definition name="errorSaisie" extends="baseLayout">
+		<put-attribute name="title" value="Erreur de saisie"/>
+		<put-attribute name="body" value="/jsp/errorSaisie.jsp"/>
+	</definition>
+	
+
+
+</tiles-definitions>

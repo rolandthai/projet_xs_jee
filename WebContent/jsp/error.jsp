@@ -9,7 +9,10 @@
 <title>Error Page</title>
 </head>
 <body>
-<h4>Erreur de saisie de la chaine des articles</h4>
-<s:include value="wspeedit.jsp"></s:include>
+
+<div style="background:url('images/ouisncf.png');"></div>
+
+<h4 style="color:red">L'identifiant ou le mot de passe est faux</h4>
+<s:include value="/jsp/login.jsp"></s:include>
 </body>
 </html>

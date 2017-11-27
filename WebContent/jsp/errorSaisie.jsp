@@ -9,7 +9,7 @@
 <title>Error Page</title>
 </head>
 <body>
-<h4>L'identifiant ou le mot de passe est faux</h4>
-<s:include value="login.jsp"></s:include>
+<h4 style="color:red">Erreur de saisie de la chaine des articles</h4>
+<s:include value="/jsp/xspeedit.jsp"></s:include>
 </body>
 </html>

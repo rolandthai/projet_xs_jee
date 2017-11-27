@@ -9,10 +9,14 @@
 <title>Login Page</title>
 </head>
 <body>
+
+
 <h3>Bienvenu dans le programme XSpeedIt</h3>
+<div style="padding-top: 30px" class="panel-body">
 <s:form action="login">
 	<s:textfield name="name" label="Nom"></s:textfield>
 	<s:textfield name="pwd" label="Mot de passe" type="password"></s:textfield>
 	<s:submit value="Valider"></s:submit>
 </s:form>
+</div>
 </html>
