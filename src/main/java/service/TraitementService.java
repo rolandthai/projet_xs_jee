@@ -9,9 +9,9 @@ public interface TraitementService {
 	 * @param chaineArticles
 	 * @return
 	 */
-	LotCartons traitementDesArticles(String chaineArticles, int tailleCartonMax); 
+	LotCartons traitementDesArticles(String chaineArticles, int tailleCartonMax) throws Exception; 
 	
-	LotCartons traitementDesArticlesSup10(String chaineArticles, int tailleCartonMax);
+	//LotCartons traitementDesArticlesSup10(String chaineArticles, int tailleCartonMax);
 	
 
 }

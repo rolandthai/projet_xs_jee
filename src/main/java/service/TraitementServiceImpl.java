@@ -8,7 +8,7 @@ import entite.LotCartons;
 
 public class TraitementServiceImpl implements TraitementService {
 
-	public LotCartons traitementDesArticles(String chaineArticles, int tailleCartonMax) {
+	public LotCartons traitementDesArticles(String chaineArticles, int tailleCartonMax) throws Exception {
 
 		LotCartons lotCartons = new LotCartons();
 
@@ -28,39 +28,39 @@ public class TraitementServiceImpl implements TraitementService {
 		}
 		else
 		{
-		for(int i=0;i<chaineArticles.length();i++)
-		{
-			String str = chaineArticles.substring(i, i+1);
-			listArticlesTmpA.add(Integer.valueOf(str));
-		}
+			
+			if(!isCorrect(chaineArticles))
+			{
+				Exception e = new Exception("Problème dur la chaine saisie");
+				throw e;
+			}
+			
+			for (int i = 0; i < chaineArticles.length(); i++) {
+				String str = chaineArticles.substring(i, i + 1);
+				listArticlesTmpA.add(Integer.valueOf(str));
+			}
 		}
 		lotCartons = triEtTraitementlisteArticle(listArticlesTmpA, tailleCartonMax);
 		
 		return lotCartons;
 	}
 
-
-	@Override
-	public LotCartons traitementDesArticlesSup10(String chaineArticles, int tailleCartonMax) {
-
-		LotCartons lotCartons = new LotCartons();
-
-
-
-		//liste temporaire utilisée pour le traitement
-		List<Integer> listArticlesTmpA = new ArrayList<Integer>();
-
-		//initialisation de la liste temporaire de la taille des articles
-		String[] listArticles = chaineArticles.split(",");		
-		for(String str : listArticles)
+	/**
+	 * Permet de voir si la valeur est bien numerique
+	 * @param chaineArticles
+	 * @return
+	 */
+	public boolean isCorrect(String chaineArticles)
+	{
+		try
 		{
-			listArticlesTmpA.add(Integer.valueOf(str.replaceAll(" ", "")));
+		     Integer.decode(chaineArticles);
+		     return true;  
 		}
-
-		lotCartons = triEtTraitementlisteArticle(listArticlesTmpA, tailleCartonMax);
-
-
-		return lotCartons;	
+		catch(NumberFormatException  e)
+		{
+		    return false;
+		}
 	}
 
 
@@ -88,10 +88,10 @@ public class TraitementServiceImpl implements TraitementService {
 			String strCarton = "";
 
 			//recuperation d'un article de la liste tempraire
-			int tailleArticle1 = listArticlesTmpA.get(i);
+			int tailleArticleA = listArticlesTmpA.get(i);
 
 			//ajout du paquet dans le lot
-			strCarton = String.valueOf(tailleArticle1);
+			strCarton = String.valueOf(tailleArticleA);
 
 			//boucle pour optimiser l'espace du Carton
 			for(int j=i+1;j<listArticlesTmpB.size();j++)
@@ -99,7 +99,7 @@ public class TraitementServiceImpl implements TraitementService {
 				//recupération de l'article suivant
 				int tailleArticleB = listArticlesTmpB.get(j);
 				//verification que les paquets rentre dans le lot
-				if((tailleArticle1 + tailleArticleB)<=tailleCartonMax)
+				if((tailleArticleA + tailleArticleB)<=tailleCartonMax)
 				{
 					//si il rentre on l'ajoute
 					String sep = "";
@@ -109,7 +109,7 @@ public class TraitementServiceImpl implements TraitementService {
 					strCarton += sep + tailleArticleB;
 					
 					
-					tailleArticle1 = tailleArticle1 + tailleArticleB;
+					tailleArticleA = tailleArticleA + tailleArticleB;
 					//On retire l'article ajouté
 					listArticlesTmpB.remove(j);
 					j--;

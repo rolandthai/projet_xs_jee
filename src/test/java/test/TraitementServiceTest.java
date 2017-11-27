@@ -16,6 +16,7 @@ public class TraitementServiceTest {
 	@Test
 	public void testTraitementDesArticles() {
 		
+		int tailleCartonMax = 10;
 		String chaineArticles = "163841689525773";
 //		String chaineArticles = "4857614221";
 		
@@ -24,13 +25,17 @@ public class TraitementServiceTest {
 		
 		LotCartons lotCartons = new LotCartons();
 		
-		lotCartons = traitementService.traitementDesArticles(chaineArticles);
+		try {
+			lotCartons = traitementService.traitementDesArticles(chaineArticles, tailleCartonMax);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
 		System.out.println("Résultat du Robot Optimisé :");
 		System.out.println("Lot de cartons : " + lotCartons.getLotDeCartons().toString().replaceAll(", ", "/"));
 		System.out.println("Nombres de cartons : " + lotCartons.getNombreDeCartons());
-		
 	}
 
 }

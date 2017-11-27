@@ -1,48 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>XSpeedIt Page</title>
-</head>
-<body>
+<div class="row">
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4 text-center">
 
-<s:include value="jsp/common/header.jsp"></s:include>
-
+<%-- 
 <h3>Bienvenu sur l'application XSPeedIt <s:property value="name"></s:property></h3>
-<h3>Veuillez saisir la suite de chaine d''articles :</h3>
+ --%>
+		<h3>XSpeedIt Robot:</h3>
 
-<s:form action="traitement">
+		<s:form action="traitement">
+			<div class="form-group">
+				<s:textfield name="tailleCartonMax" label="Taille max d\'un carton "
+					placeholder="default : 10" default="10" class="form-control"></s:textfield>
+			</div>
+			<div class="form-group">
+				<s:textfield name="chaineArticles" label="Chaine d'articles * "
+					class="form-control" placeholder="Ex: 321434545"></s:textfield>
+			</div>
+			<s:submit value="Valider" class="btn btn-default"></s:submit>
+		</s:form>
+		<p class="info">*si la taille max de carton est >10 séparer la
+			saisie avec des virgules.</p>
+		<div class="col-sm-4"></div>
+	</div>
+</div>
 
-	<s:textfield name="tailleCartonMax" label="Taille max d\'un carton"></s:textfield>
+<div class="row" style="background-color: #ABCD88;">
+	<h3>
+		<s:text name=" Nombre de cartons : "></s:text>
+		<s:property value="lotCartons.nombreDeCartons"></s:property>
+	</h3>
 
-	<s:textfield name="chaineArticles" label="Chaine d'article"></s:textfield>
-	
-	<s:submit value="Valider"></s:submit>
-</s:form>
+	<h3>
+		<s:text name="Robot Optimisé : "></s:text>
+		<s:property value="lotCartons.lotDeCartonsStr"></s:property>
+	</h3>
+</div>
 
-
-
-
-<s:text name="resultat : "></s:text>
- <s:property value="resultat"></s:property> 
- <br/>
- <s:text name=" resultat2 : "></s:text>
- <s:property value="lotCartons.nombreDeCartons"></s:property>
-<br/>
-<s:text name="resultat : "></s:text>
- <s:property value="lotCartons.lotDeCartonsStr"></s:property>
-
-
-
-
-<s:if test="resultat != null && !resultat.equal('')">
+<s:if test="<s:property value='resultat'/>!= null">
 </s:if>
 
-
-<s:include value="jsp/common/footer.jsp"></s:include>
-
-</body>
-</html>

@@ -25,7 +25,7 @@ public class TraitementAction implements Action {
 		else return "ERROR";
 	}
 	
-	public String calcul() throws Exception {
+	public String calcul()  {
 
 //		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"applicationContext.xml"});
 //		
@@ -33,16 +33,26 @@ public class TraitementAction implements Action {
 		
 		TraitementService traitementService = new TraitementServiceImpl();
 		
+		if(getTailleCartonMax() == 0)
+		{
+			setTailleCartonMax(10);
+		}
+		
 		if(getChaineArticles() != null && !getChaineArticles().equals(""))
 		{
 			setResultat(getChaineArticles().substring(2));
 			
-			if(getTailleCartonMax() > 10 && !getChaineArticles().contains(","))
-			{
+//			if(getTailleCartonMax() > 10 && !getChaineArticles().contains(","))
+//			{
+//				return "ERROR";
+//			}
+			try {
+				lotCartons = traitementService.traitementDesArticles(getChaineArticles(), getTailleCartonMax());
+			} catch (Exception e) {
+				e.printStackTrace();
 				return "ERROR";
-			}
-			lotCartons = traitementService.traitementDesArticles(getChaineArticles(), getTailleCartonMax());	
-			
+			}	
+			 
 			
 			return "SUCCESS";
 		}
