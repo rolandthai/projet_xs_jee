@@ -33,7 +33,7 @@ public class TraitementServiceTest {
 		try {
 			lotCartons = traitementService.traitementDesArticles(chaineArticles, tailleCartonMax);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 		System.out.println("Résultat du Robot Optimisé :");

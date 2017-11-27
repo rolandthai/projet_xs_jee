@@ -6,7 +6,7 @@
 
 <package name="/" namespace="/" extends="tiles-default">
 
-	<action name="home">
+	<action name="oui">
 		<result type="tiles">login</result>
 	</action>
 	

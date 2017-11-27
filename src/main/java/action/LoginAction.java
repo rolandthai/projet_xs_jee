@@ -10,7 +10,7 @@ public class LoginAction implements Action {
 	
 	@Override
 	public String execute() throws Exception {
-		if("toto".equals(getName()) && "tata".equals(getPwd()))
+		if("oui".equals(getName()) && "sncf".equals(getPwd()))
 		return "SUCCESS";
 		else return "ERROR";
 	}
