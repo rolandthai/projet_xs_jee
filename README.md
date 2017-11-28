@@ -20,5 +20,9 @@ put the war file in tomcat server
 
 run as :
 ```
-http://[tomcat server]/xspeeditjee/oui
+http://[tomcat host]:[tomcat port]/xspeeditjee-0.0.1-SNAPSHOT/oui
+ou
+http://[tomcat host]:[tomcat port]/xspeeditjee/oui
+ou 
+autre selon le contect définit.
 ```
