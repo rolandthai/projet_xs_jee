@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
-				<img alt="Oui SNCF" src="/xspeeditjee/images/ouisncf.jpg">
+				<img alt="Oui SNCF" src="./images/ouisncf.jpg">
 			</div>
 			<div class="col-sm-8">
 				<h1>XSpeedIt</h1>

@@ -10,8 +10,8 @@
 <title><tiles:getAsString name="title" /></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" href="/xspeeditjee/bootstrap/css/bootstrap.css" type="text/css">
-<link href="/xspeeditjee/css/xspeedit.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.css" type="text/css">
+<link href="./css/xspeedit.css" rel="stylesheet" type="text/css" media="all" />
 
 <!-- <link href="/static/css/sigdca.css" rel="stylesheet" type="text/css"  /> -->
 </head>

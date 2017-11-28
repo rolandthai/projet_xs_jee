@@ -11,21 +11,22 @@ public class TraitementServiceTest {
 
 	@Test
 	public void testTraitementDesArticlesOK() {
-		int tailleCartonMax = 10;
-		String chaineArticles = "163841689525773";
+		final int tailleCartonMax = 10;
+		final String chaineArticles = "163841689525773";
 		// String chaineArticles = "4857614221";
 		testTraitementDesArticles(chaineArticles, tailleCartonMax);
 	}
 
 	@Test
 	public void testTraitementDesArticlesKO() {
-		int tailleCartonMax = 10;
-		String chaineArticles = "1638416ert25773";
+		final int tailleCartonMax = 10;
+		final String chaineArticles = "1638416ert25773";
 		testTraitementDesArticles(chaineArticles, tailleCartonMax);
 	}
 
 	public void testTraitementDesArticles(String chaineArticles, int tailleCartonMax) {
 
+		// Injection de Dépendance Spring
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		TraitementService traitementService = (TraitementService) context.getBean("traitementService");
 
